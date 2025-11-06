@@ -143,7 +143,7 @@ public class Signup extends JFrame implements ActionListener{
             String name = tfname.getText();
             String password = tfpassword.getText();
             String question = security.getSelectedItem();
-            String answer = tfanswer.getName();
+            String answer = tfanswer.getText();
             
             String query = "insert into account values ('"+username+"', '"+name+"', '"+password+"', '"+question+"', '"+answer+"' )";
             try
