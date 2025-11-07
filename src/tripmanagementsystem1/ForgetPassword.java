@@ -112,6 +112,7 @@ public class ForgetPassword extends JFrame implements ActionListener
         setVisible(true);
     }
     
+    @Override
     public void actionPerformed (ActionEvent ae)
     {
         if (ae.getSource() == search)

@@ -1,9 +1,10 @@
 package tripmanagementsystem1;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import java.sql.ResultSet;
 
-public class AddCustomer extends JFrame
+public class AddCustomer extends JFrame implements ActionListener
 {
     JLabel labelusername, labelname;
     JComboBox comboid;
@@ -119,12 +120,14 @@ public class AddCustomer extends JFrame
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
         add.setBounds(70,430,100,25);
+        add.addActionListener(this);
         add(add);
        
         back = new JButton("Back");
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
         back.setBounds(220,430,100,25);
+        back.addActionListener(this);
         add(back);
        
         
@@ -139,7 +142,12 @@ public class AddCustomer extends JFrame
         try 
         {
            Connector c = new Connector();
-           ResultSet rs = c.s.executeQuery("select * from account where username");
+           ResultSet rs = c.s.executeQuery("select * from account where username = 'abc@123gmail.com'");
+           while (rs.next())
+           {
+               labelusername.setText(rs.getString("username"));
+               labelname.setText(rs.getString("name"));
+           }
         }
         catch(Exception e)
         {
@@ -148,6 +156,64 @@ public class AddCustomer extends JFrame
         
         setVisible(true);
     }
+
+    AddCustomer(String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    @Override
+    public void actionPerformed (ActionEvent ae)
+    {
+        if (ae.getSource() == add)
+        {
+            String username = labelusername.getText();
+            String id = (String) comboid.getSelectedItem();
+            String number = tfnumber.getText();
+            String name = labelname.getText();
+            String gender = null;
+            if (rmale.isSelected())
+            {
+                gender = "Male";
+            }
+            else 
+            {
+                gender = "Female";
+            }
+            String country = tfcountry.getText();
+            String address = tfaddress.getText();
+            String phone = tfphone.getText();
+            String email = tfemail.getText();
+            
+            // Fot inset these value into database it will use
+            try 
+            {
+                Connector c = new Connector();
+                String query = "INSERT INTO customer(username, id, number, name, gender, country, address, phone, email) "
+                        + "VALUES ('" + username + "', '" + id + "', '" + number + "', '" + name + "', '" + gender + "', '" + country + "', '" + address + "', '" + phone + "', '" + email + "')";
+                c.s.executeUpdate(query);
+                
+//                String query = "INSERT INTO customer VALUES ('"+username+"', '"+id+"', '"+number+"', '"+gender+"', '"+country+"', '"+address+"', '"+phone+"', '"+email+"', )";
+//                c.s.executeUpdate(query);
+                
+                JOptionPane.showMessageDialog(null, "Customer Details Added Successfully");
+                setVisible(false);
+                
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+            
+            
+            
+        }
+        else
+        {
+            setVisible(false);
+        }
+    }
+    
+    
     public static void main (String[] args)
     {
         new AddCustomer();
