@@ -4,19 +4,23 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.ResultSet;
 
-public class AddCustomer extends JFrame implements ActionListener
+public class UpdateCustomer extends JFrame implements ActionListener
 {
+    // Globally Declare.
     JLabel labelusername, labelname;
-    JComboBox comboid;
-    JTextField tfnumber, tfcountry, tfaddress, tfphone, tfemail;
-    JRadioButton rmale, rfemale;
+    JTextField tfnumber, tfcountry, tfaddress, tfphone, tfemail, tfid, tfgender;
     JButton back, add;
     
-    AddCustomer(String username)
+    UpdateCustomer(String username)
     {
-        setBounds(450,200,850,550);
+        setBounds(500,200,850,550);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
+        
+        JLabel text = new JLabel("UPDATE CUSTOMER DETAILS");
+        text.setBounds(50,5,300,25);
+        text.setFont(new Font("Tahoma", Font.BOLD, 20));
+        add(text);
         
         JLabel lblusername = new JLabel("Username");
         lblusername.setBounds(30,50,150,25);
@@ -31,15 +35,9 @@ public class AddCustomer extends JFrame implements ActionListener
         lblid.setBounds(30,90,150,25);
         add(lblid);
         
-        comboid = new JComboBox(new String[]
-        {
-            "Passport",
-            "Adhar Card",
-            "Pan Card"
-        });
-        comboid.setBounds(220,90,150,25);
-        comboid.setBackground(Color.WHITE);
-        add(comboid);
+        tfid = new JTextField();
+        tfid.setBounds(220,90,150,25);
+        add(tfid);
         
         JLabel lblnumber = new JLabel("Number");
         lblnumber.setBounds(30,130,150,25);
@@ -64,21 +62,11 @@ public class AddCustomer extends JFrame implements ActionListener
         lblgender.setBounds(30,210,150,25);
         add(lblgender);
         
-        // Define RaidoButton for using male or female
-        rmale = new JRadioButton("Male");
-        rmale. setBounds(220,210,70,25);
-        rmale.setBackground(Color.WHITE);
-        add(rmale);
-        // Female
-        rfemale = new JRadioButton("Female");
-        rfemale.setBounds(300,210,70,25);
-        rmale.setBackground(Color.WHITE);
-        add(rfemale);
         
-        // For if male button click then female button are unclick
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(rmale);
-        bg.add(rfemale);
+        tfgender = new JTextField();
+        tfgender.setBounds(220,210,150,25);
+        add(tfgender);
+
         
         JLabel lblcountry = new JLabel("Country");
         lblcountry.setBounds(30,250,150,25);
@@ -116,10 +104,10 @@ public class AddCustomer extends JFrame implements ActionListener
         add(tfemail);
         
         
-        add = new JButton("Add");
+        add = new JButton("Update");
         add.setBackground(Color.BLACK);
         add.setForeground(Color.WHITE);
-        add.setBounds(70,430,100,25);
+        add.setBounds(70,430,95,25);
         add.addActionListener(this);
         add(add);
        
@@ -131,22 +119,29 @@ public class AddCustomer extends JFrame implements ActionListener
         add(back);
        
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/newcustomer.jpg"));
-        Image i2 = i1.getImage().getScaledInstance(400, 500, Image.SCALE_DEFAULT);
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/update.png"));
+        Image i2 = i1.getImage().getScaledInstance(350, 400, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
-        image.setBounds(400,40,450, 420);
+        image.setBounds(430,65,350, 400);
         add(image);
         
         
         try 
         {
            Connector c = new Connector();
-           ResultSet rs = c.s.executeQuery("select * from account where username = '"+username+"'");
+           ResultSet rs = c.s.executeQuery("select * from customer where username = '"+username+"'");
            while (rs.next())
            {
                labelusername.setText(rs.getString("username"));
                labelname.setText(rs.getString("name"));
+               tfid.setText(rs.getString("id"));
+               tfnumber.setText(rs.getString("number"));
+               tfgender.setText(rs.getString("gender"));
+               tfcountry.setText(rs.getString("country"));
+               tfaddress.setText(rs.getString("address"));
+               tfphone.setText(rs.getString("phone"));
+               tfemail.setText(rs.getString("email"));
            }
         }
         catch(Exception e)
@@ -164,18 +159,10 @@ public class AddCustomer extends JFrame implements ActionListener
         if (ae.getSource() == add)
         {
             String username = labelusername.getText();
-            String id = (String) comboid.getSelectedItem();
+            String id = tfid.getText();
             String number = tfnumber.getText();
             String name = labelname.getText();
-            String gender = null;
-            if (rmale.isSelected())
-            {
-                gender = "Male";
-            }
-            else 
-            {
-                gender = "Female";
-            }
+            String gender = tfgender.getText();
             String country = tfcountry.getText();
             String address = tfaddress.getText();
             String phone = tfphone.getText();
@@ -185,13 +172,11 @@ public class AddCustomer extends JFrame implements ActionListener
             try 
             {
                 Connector c = new Connector();
-                String query = "INSERT INTO customer VALUES ('" + username + "', '" + id + "', '" + number + "', '" + name + "', '" + gender + "', '" + country + "', '" + address + "', '" + phone + "', '" + email + "')";
+                String query = "UPDATE  customer SET username = '" + username + "',id = '" + id + "', number = '" + number + "', name = '" + name + "', gender = '" + gender + "', country = '" + country + "', address = '" + address + "', phone = '" + phone + "', email = '" + email + "'";
                 c.s.executeUpdate(query);
                 
-//                String query = "INSERT INTO customer VALUES ('"+username+"', '"+id+"', '"+number+"', '"+gender+"', '"+country+"', '"+address+"', '"+phone+"', '"+email+"', )";
-//                c.s.executeUpdate(query);
                 
-                JOptionPane.showMessageDialog(null, "Customer Details Added Successfully");
+                JOptionPane.showMessageDialog(null, "Customer Details Updated Successfully");
                 setVisible(false);
                 
             } 
@@ -212,6 +197,6 @@ public class AddCustomer extends JFrame implements ActionListener
     
     public static void main (String[] args)
     {
-        new AddCustomer("abc@123gmail.com");
+        new UpdateCustomer("abc@123gmail.com");
     }
 }

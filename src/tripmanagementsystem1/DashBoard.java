@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class DashBoard extends JFrame implements ActionListener
 {
-    JButton viewPersonalDetails, addPersonalDetails;
+    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails;
     
     String username;
     DashBoard(String username)
@@ -57,16 +57,17 @@ public class DashBoard extends JFrame implements ActionListener
         addPersonalDetails.setFont(new Font("Tahama", Font.PLAIN, 20));
         addPersonalDetails.setBounds(0,0,300,50);
         addPersonalDetails.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
-        // addPersonalDetails.addActionListener(this);
+        addPersonalDetails.addActionListener(this);
         p2.add(addPersonalDetails);
         
         // Update button
-        JButton updatePersonalDetails = new JButton("Update Personal Details");
+        updatePersonalDetails = new JButton("Update Personal Details");
         updatePersonalDetails.setBackground(new Color (0,0,102));
         updatePersonalDetails.setForeground(Color.WHITE);
         updatePersonalDetails.setFont(new Font("Tahama", Font.PLAIN, 20));
         updatePersonalDetails.setBounds(0,50,300,50);
         updatePersonalDetails.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        updatePersonalDetails.addActionListener(this);
         p2.add(updatePersonalDetails);
         
         // View Details button
@@ -213,11 +214,16 @@ public class DashBoard extends JFrame implements ActionListener
     {
         if (ae.getSource() == addPersonalDetails)
         {
+//            System.out.println("Add ");
             new AddCustomer(username);
         }
         else if (ae.getSource() == viewPersonalDetails)
         {
             new ViewCustomer(username);
+        }
+        else if (ae.getSource() == updatePersonalDetails)
+        {
+            new UpdateCustomer(username);
         }
     }
     
