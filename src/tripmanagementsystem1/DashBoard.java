@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class DashBoard extends JFrame implements ActionListener
 {
-    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, checkpackages;
+    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, checkpackages, bookpackage;
     
     String username;
     DashBoard(String username)
@@ -101,13 +101,14 @@ public class DashBoard extends JFrame implements ActionListener
         p2.add(checkpackages);
         
         // Booking Button
-        JButton bookpackages = new JButton("Book Package");
-        bookpackages.setBackground(new Color (0,0,102));
-        bookpackages.setForeground(Color.WHITE);
-        bookpackages.setFont(new Font("Tahama", Font.PLAIN, 20));
-        bookpackages.setBounds(0,250,300,50);
-        bookpackages.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
-        p2.add(bookpackages);
+        bookpackage = new JButton("Book Package");
+        bookpackage.setBackground(new Color (0,0,102));
+        bookpackage.setForeground(Color.WHITE);
+        bookpackage.setFont(new Font("Tahama", Font.PLAIN, 20));
+        bookpackage.setBounds(0,250,300,50);
+        bookpackage.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        bookpackage.addActionListener(this);
+        p2.add(bookpackage);
         
         
         // View Package Button
@@ -229,6 +230,10 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae.getSource() == checkpackages)
         {
             new CheckPackage();
+        }
+        else if (ae. getSource() == bookpackage)
+        {
+            new BookPackage(username);
         }
     }
     
