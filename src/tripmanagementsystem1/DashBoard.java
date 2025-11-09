@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class DashBoard extends JFrame implements ActionListener
 {
-    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, checkpackages, bookpackage;
+    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, checkpackages, bookpackage, viewpackage;
     
     String username;
     DashBoard(String username)
@@ -23,7 +23,7 @@ public class DashBoard extends JFrame implements ActionListener
         //Dashboard Panel
         JPanel p1 = new JPanel();
         p1.setLayout(null);
-        p1.setBackground(new Color(0,0,102));
+        p1.setBackground(new Color(255, 255, 255, 40));
         p1.setBounds(0,0,1600,65);
         add(p1);
         
@@ -112,12 +112,13 @@ public class DashBoard extends JFrame implements ActionListener
         
         
         // View Package Button
-        JButton viewpackage = new JButton("View Package");
+        viewpackage = new JButton("View Package");
         viewpackage.setBackground(new Color (0,0,102));
         viewpackage.setForeground(Color.WHITE);
         viewpackage.setFont(new Font("Tahama", Font.PLAIN, 20));
         viewpackage.setBounds(0,300,300,50);
-        viewpackage.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        viewpackage.setMargin(new Insets(0,10,0,10));                 //Using set Margin     
+        viewpackage.addActionListener(this);
         p2.add(viewpackage);
         
         // View Hotels Botton
@@ -193,7 +194,7 @@ public class DashBoard extends JFrame implements ActionListener
         about.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
         p2.add(about);
         
-        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("icons/home.jpg"));
+        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("icons/XPosC9.jpg"));
         Image i5 = i4.getImage().getScaledInstance(1650, 1000, Image.SCALE_DEFAULT);
         ImageIcon i6 = new ImageIcon(i5);
         JLabel image = new JLabel(i6);
@@ -234,6 +235,10 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae. getSource() == bookpackage)
         {
             new BookPackage(username);
+        }
+        else if (ae.getSource() == viewpackage)
+        {
+            new ViewPackage(username);
         }
     }
     

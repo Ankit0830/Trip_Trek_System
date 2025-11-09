@@ -22,8 +22,9 @@ public class BookPackage extends JFrame implements ActionListener
         getContentPane().setBackground(Color.WHITE);
         
         
-        JLabel text = new JLabel("BOOK PACKAGE");
-        text.setBounds(100,10,200,30);
+        JLabel text = new JLabel("BOOK PACKAGE", SwingConstants.CENTER);
+        text.setOpaque(true);
+        text.setBounds(0,0,getWidth(),30);
         text.setFont(new Font("Tahome", getFont().BOLD, 20));
         add(text);
         
@@ -165,7 +166,7 @@ public class BookPackage extends JFrame implements ActionListener
         Image i2 = i1.getImage().getScaledInstance(500, 400, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
-        image.setBounds(500,30,500, 400);
+        image.setBounds(500,50,500, 390);
         image.setLayout(null);
         add(image);
         

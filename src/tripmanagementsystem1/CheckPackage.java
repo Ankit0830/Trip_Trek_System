@@ -39,13 +39,6 @@ public class CheckPackage extends JFrame
         p1.setLayout(null);
         p1.setBackground(Color.WHITE);
         
-        // GOLD PACKAGE
-//        JLabel l1 = new JLabel(pack [1], SwingConstants.CENTER );
-////        l1.setBounds(50,5,300,30);
-//        l1.setForeground(Color.MAGENTA);
-//        l1.setFont(new Font("Tahama", Font.BOLD, 30));
-//        l1.setBounds(0, 5, 900, 40);
-//        p1.add(l1);
         
         // === RIBBON + CENTERED TITLE ===
         JLabel l1 = new JLabel(pack[1], SwingConstants.CENTER);
