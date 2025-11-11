@@ -10,7 +10,8 @@ import javax.swing.*;
 
 public class DashBoard extends JFrame implements ActionListener
 {
-    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, checkpackages, bookpackage, viewpackage;
+    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, 
+            checkpackages, bookpackage, viewpackage,viewhotels, destinations;
     
     String username;
     DashBoard(String username)
@@ -122,12 +123,13 @@ public class DashBoard extends JFrame implements ActionListener
         p2.add(viewpackage);
         
         // View Hotels Botton
-        JButton viewhotels = new JButton("View Hotels");
+        viewhotels = new JButton("View Hotels");
         viewhotels.setBackground(new Color (0,0,102));
         viewhotels.setForeground(Color.WHITE);
         viewhotels.setFont(new Font("Tahama", Font.PLAIN, 20));
         viewhotels.setBounds(0,350,300,50);
         viewhotels.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        viewhotels.addActionListener(this);
         p2.add(viewhotels);
         
         // Hotel Booking button
@@ -150,13 +152,14 @@ public class DashBoard extends JFrame implements ActionListener
         p2.add(viewbookhotels);
         
         // Destination button
-        JButton destination = new JButton("Destination");
-        destination.setBackground(new Color (0,0,102));
-        destination.setForeground(Color.WHITE);
-        destination.setFont(new Font("Tahama", Font.PLAIN, 20));
-        destination.setBounds(0,500,300,50);
-        destination.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
-        p2.add(destination);
+        destinations = new JButton("Destination");
+        destinations.setBackground(new Color (0,0,102));
+        destinations.setForeground(Color.WHITE);
+        destinations.setFont(new Font("Tahama", Font.PLAIN, 20));
+        destinations.setBounds(0,500,300,50);
+        destinations.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        destinations.addActionListener(this);
+        p2.add(destinations);
         
         // Payments button
         JButton payments = new JButton("Payments");
@@ -239,6 +242,14 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae.getSource() == viewpackage)
         {
             new ViewPackage(username);
+        }
+        else if (ae.getSource() == viewhotels)
+        {
+            new CheckHotels();
+        }
+        else if (ae.getSource() == destinations)
+        {
+            new Destinations();
         }
     }
     
