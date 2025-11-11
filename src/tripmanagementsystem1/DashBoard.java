@@ -11,7 +11,8 @@ import javax.swing.*;
 public class DashBoard extends JFrame implements ActionListener
 {
     JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, 
-            checkpackages, bookpackage, viewpackage,viewhotels, destinations;
+            checkpackages, bookpackage, viewpackage,viewhotels, destinations,
+            bookHotels;
     
     String username;
     DashBoard(String username)
@@ -133,12 +134,13 @@ public class DashBoard extends JFrame implements ActionListener
         p2.add(viewhotels);
         
         // Hotel Booking button
-        JButton bookHotels = new JButton("Book Hotel");
+        bookHotels = new JButton("Book Hotel");
         bookHotels.setBackground(new Color (0,0,102));
         bookHotels.setForeground(Color.WHITE);
         bookHotels.setFont(new Font("Tahama", Font.PLAIN, 20));
         bookHotels.setBounds(0,400,300,50);
         bookHotels.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        bookHotels.addActionListener(this);
         p2.add(bookHotels);
         
         
@@ -250,6 +252,10 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae.getSource() == destinations)
         {
             new Destinations();
+        }
+        else if (ae.getSource() == bookHotels)
+        {
+            new BookHotel(username);
         }
     }
     
