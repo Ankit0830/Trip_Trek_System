@@ -12,7 +12,7 @@ public class DashBoard extends JFrame implements ActionListener
 {
     JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, 
             checkpackages, bookpackage, viewpackage,viewhotels, destinations,
-            bookHotels;
+            bookHotels,viewbookhotels;
     
     String username;
     DashBoard(String username)
@@ -145,12 +145,13 @@ public class DashBoard extends JFrame implements ActionListener
         
         
         // View Booked Hotel button
-        JButton viewbookhotels = new JButton("View Booked Hotels");
+        viewbookhotels = new JButton("View Booked Hotels");
         viewbookhotels.setBackground(new Color (0,0,102));
         viewbookhotels.setForeground(Color.WHITE);
         viewbookhotels.setFont(new Font("Tahama", Font.PLAIN, 20));
         viewbookhotels.setBounds(0,450,300,50);
         viewbookhotels.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        viewbookhotels.addActionListener(this);
         p2.add(viewbookhotels);
         
         // Destination button
@@ -256,6 +257,10 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae.getSource() == bookHotels)
         {
             new BookHotel(username);
+        }
+        else if (ae.getSource() == viewbookhotels)
+        {
+            new ViewBookedHotel(username);
         }
     }
     
