@@ -231,6 +231,7 @@ public class BookHotel extends JFrame implements ActionListener
     }
     
     
+    @Override
     public void actionPerformed (ActionEvent ae)
     {
         if (ae.getSource() == checkprice)
@@ -296,6 +297,7 @@ public class BookHotel extends JFrame implements ActionListener
 
                 JOptionPane.showMessageDialog(null, "Hotel Booked Successfully");
                 setVisible(false);
+                dispose();
             } 
             catch (Exception e) 
             {
@@ -311,6 +313,6 @@ public class BookHotel extends JFrame implements ActionListener
     
     public static void main (String[] args)
     {
-        new BookHotel("abc@123gmail.com");
+        new BookHotel("").setVisible(true);
     }
 }

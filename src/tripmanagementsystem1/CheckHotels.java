@@ -122,6 +122,6 @@ public class CheckHotels extends JFrame implements Runnable
     }
 
     public static void main(String[] args) {
-        new CheckHotels();
+        new CheckHotels().setVisible(true);
     }
 }

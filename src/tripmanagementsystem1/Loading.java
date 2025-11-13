@@ -8,16 +8,19 @@ public class Loading extends JFrame implements Runnable
     JProgressBar bar;
     String username;
     
+    
     public void run ()
     {
         try 
         {
-            for(int i =1; i <= bar.getMaximum(); i++)
-            {
-                int max = bar.getMaximum();
+            int max = bar.getMaximum();
                 int value = bar.getValue();
                 
-                if(value<max)
+            for(int i =1; i <= bar.getMaximum(); i++)
+            {
+                
+                
+                if(i<max)
                 {
 //                    101 < 100
                     bar.setValue(bar.getValue() + 1);
@@ -25,10 +28,10 @@ public class Loading extends JFrame implements Runnable
                 else 
                 {
                     setVisible (false);
-                    new DashBoard(username);
-                    break;
+                    new DashBoard(username).setVisible(true);
+                    
                 }
-                Thread.sleep(20);
+                Thread.sleep(10);
             }
         }
         catch(Exception e)
@@ -73,10 +76,8 @@ public class Loading extends JFrame implements Runnable
         add(lblusername);
         
         
-        t.start();
-        
         setVisible(true);
-        
+        t.start();
         
     }
     public static void main (String[] args)

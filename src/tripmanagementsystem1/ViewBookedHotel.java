@@ -178,10 +178,11 @@ public class ViewBookedHotel extends JFrame implements ActionListener
     public void actionPerformed (ActionEvent ae)
     {
         setVisible(false);
+        dispose();
     }
     
     public static void main (String[] args)
     {
-        new ViewBookedHotel("abc@123gmail.com");
+        new ViewBookedHotel("").setVisible(true);
     }
 }

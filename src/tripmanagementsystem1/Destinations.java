@@ -122,6 +122,6 @@ public class Destinations extends JFrame implements Runnable
     }
 
     public static void main(String[] args) {
-        new Destinations();
+        new Destinations().setVisible(true);
     }
 }

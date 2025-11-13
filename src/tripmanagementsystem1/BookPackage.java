@@ -210,6 +210,7 @@ public class BookPackage extends JFrame implements ActionListener
                 
                 JOptionPane.showMessageDialog(null, "Package Booked Successfully");
                 setVisible(false);
+                dispose();
             } 
             catch (Exception e) 
             {
@@ -224,6 +225,6 @@ public class BookPackage extends JFrame implements ActionListener
     
     public static void main (String[] args)
     {
-        new BookPackage("abc@123gmail.com");
+        new BookPackage("").setVisible(true);
     }
 }

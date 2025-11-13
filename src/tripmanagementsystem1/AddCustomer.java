@@ -193,7 +193,7 @@ public class AddCustomer extends JFrame implements ActionListener
                 
                 JOptionPane.showMessageDialog(null, "Customer Details Added Successfully");
                 setVisible(false);
-                
+                dispose();
             } 
             catch (Exception e) 
             {
@@ -212,6 +212,4 @@ public class AddCustomer extends JFrame implements ActionListener
     
     public static void main (String[] args)
     {
-        new AddCustomer("abc@123gmail.com");
-    }
-}
+        new AddCustomer("");

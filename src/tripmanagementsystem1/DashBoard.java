@@ -12,7 +12,8 @@ public class DashBoard extends JFrame implements ActionListener
 {
     JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, 
             checkpackages, bookpackage, viewpackage,viewhotels, destinations,
-            bookHotels,viewbookhotels, payments, calculators,notepad, about;
+            bookHotels,viewbookhotels, payments, calculators,notepad, about, 
+            deletePersonalDetails;
     
     String username;
     DashBoard(String username)
@@ -83,12 +84,13 @@ public class DashBoard extends JFrame implements ActionListener
         p2.add(viewPersonalDetails);
         
         // Delete button
-        JButton deletePersonalDetails = new JButton("Delete Personal Details");
+        deletePersonalDetails = new JButton("Delete Personal Details");
         deletePersonalDetails.setBackground(new Color (0,0,102));
         deletePersonalDetails.setForeground(Color.WHITE);
         deletePersonalDetails.setFont(new Font("Tahama", Font.PLAIN, 20));
         deletePersonalDetails.setBounds(0,150,300,50);
         deletePersonalDetails.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        deletePersonalDetails.addActionListener(this);
         p2.add(deletePersonalDetails);
         
         
@@ -295,6 +297,10 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae.getSource() == about)
         {
             new About();
+        }
+        else if (ae.getSource() == deletePersonalDetails)
+        {
+            new DeleteDetails(username);
         }
     }
     

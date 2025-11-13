@@ -178,7 +178,7 @@ public class UpdateCustomer extends JFrame implements ActionListener
                 
                 JOptionPane.showMessageDialog(null, "Customer Details Updated Successfully");
                 setVisible(false);
-                
+                dispose();
             } 
             catch (Exception e) 
             {
@@ -197,6 +197,6 @@ public class UpdateCustomer extends JFrame implements ActionListener
     
     public static void main (String[] args)
     {
-        new UpdateCustomer("abc@123gmail.com");
+        new UpdateCustomer("").setVisible(true);
     }
 }

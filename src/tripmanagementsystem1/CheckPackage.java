@@ -137,6 +137,6 @@ public class CheckPackage extends JFrame
     
     public static void main(String[] args)
     {
-        new CheckPackage();
+        new CheckPackage().setVisible(true);
     }
 }

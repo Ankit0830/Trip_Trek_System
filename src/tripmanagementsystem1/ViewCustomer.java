@@ -155,10 +155,11 @@ public class ViewCustomer extends JFrame implements ActionListener
     public void actionPerformed (ActionEvent ae)
     {
         setVisible(false);
+        dispose();
     }
     
     public static void main (String[] args)
     {
-        new ViewCustomer("abc@123gmail.com");
+        new ViewCustomer("").setVisible(true);
     }
 }

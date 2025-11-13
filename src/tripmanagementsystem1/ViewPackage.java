@@ -143,10 +143,11 @@ public class ViewPackage extends JFrame implements ActionListener
     public void actionPerformed (ActionEvent ae)
     {
         setVisible(false);
+        dispose();
     }
     
     public static void main (String[] args)
     {
-        new ViewPackage("abc@123gmail.com");
+        new ViewPackage("").setVisible(true);
     }
 }

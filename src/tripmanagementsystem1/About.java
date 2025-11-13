@@ -49,11 +49,12 @@ public class About extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e) 
     {
         setVisible(false);
+        dispose();
     }
     
     
     public static void main(String[] args) {
-        new About();
+        new About().setVisible(true);
     }
 
     

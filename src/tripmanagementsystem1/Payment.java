@@ -60,6 +60,6 @@ public class Payment extends JFrame implements ActionListener
     
     public static void main (String[] args)
     {
-        new Payment();
+        new Payment().setVisible(true);
     }
 }
