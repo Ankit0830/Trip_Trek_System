@@ -310,3 +310,175 @@ public class DashBoard extends JFrame implements ActionListener
        
     }
 }
+
+
+
+
+
+
+
+
+//package tripmanagementsystem1;
+//
+//import java.awt.*;
+//import java.awt.event.*;
+//import javax.swing.*;
+//
+//public class DashBoard extends JFrame implements ActionListener {
+//
+//    JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails,
+//            checkpackages, bookpackage, viewpackage, viewhotels, destinations,
+//            bookHotels, viewbookhotels, payments, calculators, notepad, about,
+//            deletePersonalDetails;
+//
+//    String username;
+//
+//    DashBoard(String username) {
+//        this.username = username;
+//        setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setTitle("Dashboard");
+//
+//        // ---------- Background Panel ----------
+//        ImageIcon bgIcon = new ImageIcon(ClassLoader.getSystemResource("tripmanagementsystem1/images/background.jpg"));
+//        Image bgImage = bgIcon.getImage();
+//
+//        JPanel backgroundPanel = new JPanel() {
+//            @Override
+//            protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//                g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
+//            }
+//        };
+//        backgroundPanel.setLayout(null);
+//        setContentPane(backgroundPanel);
+//
+//        // ---------- Top Panel ----------
+//        JPanel p1 = new JPanel();
+//        p1.setLayout(null);
+//        p1.setBackground(new Color(0, 0, 102)); // solid opaque
+//        p1.setBounds(0, 0, 1600, 65);
+//        backgroundPanel.add(p1);
+//
+//        // Logo
+//        ImageIcon logoIcon = new ImageIcon(ClassLoader.getSystemResource("tripmanagementsystem1/images/logo.png"));
+//        Image scaledLogo = logoIcon.getImage().getScaledInstance(45, 45, Image.SCALE_SMOOTH);
+//        JLabel logo = new JLabel(new ImageIcon(scaledLogo));
+//        logo.setBounds(15, 8, 45, 45);
+//        p1.add(logo);
+//
+//        // Heading
+//        JLabel heading = new JLabel("Dashboard");
+//        heading.setBounds(80, 10, 300, 40);
+//        heading.setForeground(Color.WHITE);
+//        heading.setFont(new Font("Tahoma", Font.BOLD, 30));
+//        p1.add(heading);
+//
+//        // ---------- Side Panel ----------
+//        JPanel p2 = new JPanel();
+//        p2.setLayout(null);
+//        p2.setBackground(new Color(0, 0, 102)); // fully opaque, no transparency!
+//        p2.setBounds(0, 65, 300, 900);
+//        backgroundPanel.add(p2);
+//
+//        // ---------- Buttons ----------
+//        addPersonalDetails = createSidebarButton("Add Personal Details", 0);
+//        updatePersonalDetails = createSidebarButton("Update Personal Details", 50);
+//        viewPersonalDetails = createSidebarButton("View Details", 100);
+//        deletePersonalDetails = createSidebarButton("Delete Personal Details", 150);
+//        checkpackages = createSidebarButton("Check Package", 200);
+//        bookpackage = createSidebarButton("Book Package", 250);
+//        viewpackage = createSidebarButton("View Package", 300);
+//        viewhotels = createSidebarButton("View Hotels", 350);
+//        bookHotels = createSidebarButton("Book Hotel", 400);
+//        viewbookhotels = createSidebarButton("View Booked Hotels", 450);
+//        destinations = createSidebarButton("Destination", 500);
+//        payments = createSidebarButton("Payments", 550);
+//        calculators = createSidebarButton("Calculators", 600);
+//        notepad = createSidebarButton("Notepad", 650);
+//        about = createSidebarButton("About", 700);
+//
+//        JButton[] buttons = {addPersonalDetails, updatePersonalDetails, viewPersonalDetails, deletePersonalDetails,
+//                checkpackages, bookpackage, viewpackage, viewhotels, bookHotels, viewbookhotels,
+//                destinations, payments, calculators, notepad, about};
+//
+//        for (JButton btn : buttons) {
+//            btn.addActionListener(this);
+//            p2.add(btn);
+//        }
+//
+//        setVisible(true);
+//    }
+//
+//    // ---------- Sidebar Button Helper ----------
+//    private JButton createSidebarButton(String text, int y) {
+//        JButton button = new JButton(text);
+//        button.setBounds(0, y, 300, 50);
+//        button.setForeground(Color.WHITE);
+//        button.setFont(new Font("Tahoma", Font.PLAIN, 18));
+//        button.setBackground(new Color(0, 0, 102));
+//        button.setBorderPainted(false);
+//        button.setFocusPainted(false);
+//        button.setOpaque(true);
+//
+//        // Hover effect
+//        button.addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mouseEntered(java.awt.event.MouseEvent evt) {
+//                button.setBackground(new Color(70, 130, 180));
+//            }
+//
+//            public void mouseExited(java.awt.event.MouseEvent evt) {
+//                button.setBackground(new Color(0, 0, 102));
+//            }
+//        });
+//        return button;
+//    }
+//
+//    // ---------- Button Actions ----------
+//    @Override
+//    public void actionPerformed(ActionEvent ae) {
+//        if (ae.getSource() == addPersonalDetails) {
+//            new AddCustomer(username);
+//        } else if (ae.getSource() == viewPersonalDetails) {
+//            new ViewCustomer(username);
+//        } else if (ae.getSource() == updatePersonalDetails) {
+//            new UpdateCustomer(username);
+//        } else if (ae.getSource() == checkpackages) {
+//            new CheckPackage();
+//        } else if (ae.getSource() == bookpackage) {
+//            new BookPackage(username);
+//        } else if (ae.getSource() == viewpackage) {
+//            new ViewPackage(username);
+//        } else if (ae.getSource() == viewhotels) {
+//            new CheckHotels();
+//        } else if (ae.getSource() == destinations) {
+//            new Destinations();
+//        } else if (ae.getSource() == bookHotels) {
+//            new BookHotel(username);
+//        } else if (ae.getSource() == viewbookhotels) {
+//            new ViewBookedHotel(username);
+//        } else if (ae.getSource() == payments) {
+//            new Payment();
+//        } else if (ae.getSource() == calculators) {
+//            try {
+//                Runtime.getRuntime().exec("calc.exe");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        } else if (ae.getSource() == notepad) {
+//            try {
+//                Runtime.getRuntime().exec("notepad.exe");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        } else if (ae.getSource() == about) {
+//            new About();
+//        } else if (ae.getSource() == deletePersonalDetails) {
+//            new DeleteDetails(username);
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        new DashBoard("");
+//    }
+//}
