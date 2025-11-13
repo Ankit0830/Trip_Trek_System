@@ -49,7 +49,8 @@ public class Payment extends JFrame implements ActionListener
     {
         if (ae.getSource()  == pay)
         {
-            
+            setVisible(false);
+            new Paytm();
         }
         else 
         {

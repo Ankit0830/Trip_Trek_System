@@ -11,7 +11,7 @@ public class Paytm extends JFrame implements ActionListener
     
     Paytm()
     {
-        setBounds(500,200,800,600);
+        setBounds(380,180,1000,600);
         
         
         JEditorPane pane = new JEditorPane();
@@ -33,7 +33,7 @@ public class Paytm extends JFrame implements ActionListener
         back = new JButton("Back");
         back.setBackground(Color.BLACK);
         back.setForeground(Color.WHITE);
-        back.setBounds(690,20,80,30);
+        back.setBounds(850,20,80,30);
         back.addActionListener(this);
         pane.add(back);
         

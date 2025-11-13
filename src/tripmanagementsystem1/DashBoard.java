@@ -12,7 +12,7 @@ public class DashBoard extends JFrame implements ActionListener
 {
     JButton viewPersonalDetails, addPersonalDetails, updatePersonalDetails, 
             checkpackages, bookpackage, viewpackage,viewhotels, destinations,
-            bookHotels,viewbookhotels;
+            bookHotels,viewbookhotels, payments, calculators,notepad, about;
     
     String username;
     DashBoard(String username)
@@ -165,39 +165,43 @@ public class DashBoard extends JFrame implements ActionListener
         p2.add(destinations);
         
         // Payments button
-        JButton payments = new JButton("Payments");
+        payments = new JButton("Payments");
         payments.setBackground(new Color (0,0,102));
         payments.setForeground(Color.WHITE);
         payments.setFont(new Font("Tahama", Font.PLAIN, 20));
         payments.setBounds(0,550,300,50);
         payments.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        payments.addActionListener(this);
         p2.add(payments);
         
         // Calculators button
-        JButton calculators = new JButton("Calculators");
+        calculators = new JButton("Calculators");
         calculators.setBackground(new Color (0,0,102));
         calculators.setForeground(Color.WHITE);
         calculators.setFont(new Font("Tahama", Font.PLAIN, 20));
         calculators.setBounds(0,600,300,50);
         calculators.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        calculators.addActionListener(this);
         p2.add(calculators);
         
         // NotePad button
-        JButton notepad = new JButton("Notepad");
+        notepad = new JButton("Notepad");
         notepad.setBackground(new Color (0,0,102));
         notepad.setForeground(Color.WHITE);
         notepad.setFont(new Font("Tahama", Font.PLAIN, 20));
         notepad.setBounds(0,650,300,50);
         notepad.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        notepad.addActionListener(this);
         p2.add(notepad);
         
         // About button
-        JButton about = new JButton("About");
+        about = new JButton("About");
         about.setBackground(new Color (0,0,102));
         about.setForeground(Color.WHITE);
         about.setFont(new Font("Tahama", Font.PLAIN, 20));
         about.setBounds(0,700,300,50);
         about.setMargin(new Insets(0,10,0,10));                 //Using set Margin 
+        about.addActionListener(this);
         p2.add(about);
         
         ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("icons/XPosC9.jpg"));
@@ -261,6 +265,36 @@ public class DashBoard extends JFrame implements ActionListener
         else if (ae.getSource() == viewbookhotels)
         {
             new ViewBookedHotel(username);
+        }
+        else if (ae.getSource() == payments)
+        {
+            new Payment();
+        }
+        else if (ae.getSource() == calculators)
+        {
+            try 
+            {
+                Runtime.getRuntime().exec("calc.exe");
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        else if (ae.getSource() == notepad)
+        {
+            try 
+            {
+                Runtime.getRuntime().exec("notepad.exe");
+            } 
+            catch (Exception e) 
+            {
+                e.printStackTrace();
+            }
+        }
+        else if (ae.getSource() == about)
+        {
+            new About();
         }
     }
     
