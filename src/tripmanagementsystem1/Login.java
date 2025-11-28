@@ -104,46 +104,96 @@ public class Login extends JFrame implements ActionListener
         
     }
     
+//    @Override
+//    public void actionPerformed (ActionEvent ae)
+//    {
+//        if (ae.getSource() == login)
+//        {
+//            try
+//            {
+//                String username = tfusername.getText();
+//                String pass = tfpassword.getText();
+//                
+//                String query = "select * from account where username = '"+username+"' AND password = '"+pass+"'";
+//                Connector c = new Connector();
+//                ResultSet rs = c.s.executeQuery(query);
+//                if(rs.next())           // It will return true or false
+//                {
+//                    setVisible(false);
+//                    new Loading(username);
+//                }
+//                else
+//                {
+//                    JOptionPane.showMessageDialog(null, "Incorrect username of password");
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                e.printStackTrace();
+//            }
+//        }
+//        else if (ae.getSource() == signup)
+//        {
+//            setVisible(false);
+//            new Signup();
+//        }
+//        else 
+//        {
+//            setVisible(false);
+//            new ForgetPassword();
+//        }
+//            
+//    }
+    
+    
+    
     @Override
-    public void actionPerformed (ActionEvent ae)
+public void actionPerformed (ActionEvent ae)
+{
+    if (ae.getSource() == login)
     {
-        if (ae.getSource() == login)
+        String username = tfusername.getText();
+        String pass = tfpassword.getText();
+
+        // 1) Empty input validation
+        if (username.equals("") || pass.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please enter Username and Password");
+            return;  // Do not continue login
+        }
+
+        try
         {
-            try
-            {
-                String username = tfusername.getText();
-                String pass = tfpassword.getText();
-                
-                String query = "select * from account where username = '"+username+"' AND password = '"+pass+"'";
-                Connector c = new Connector();
-                ResultSet rs = c.s.executeQuery(query);
-                if(rs.next())           // It will return true or false
-                {
-                    setVisible(false);
-                    new Loading(username);
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "Incorrect username of password");
-                }
+            // 2) SQL query
+            String query = "select * from account where username = '"+username+"' AND password = '"+pass+"'";
+            Connector c = new Connector();
+            ResultSet rs = c.s.executeQuery(query);
+
+            // 3) Validate username & password from DB
+            if(rs.next()) {
+                setVisible(false);
+                new Loading(username);
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect username or password");
             }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
         }
-        else if (ae.getSource() == signup)
+        catch (Exception e)
         {
-            setVisible(false);
-            new Signup();
+            e.printStackTrace();
         }
-        else 
-        {
-            setVisible(false);
-            new ForgetPassword();
-        }
-            
     }
+    else if (ae.getSource() == signup)
+    {
+        setVisible(false);
+        new Signup();
+    }
+    else 
+    {
+        setVisible(false);
+        new ForgetPassword();
+    }
+}
+
+    
     
     public static void main(String[] args)
     {
