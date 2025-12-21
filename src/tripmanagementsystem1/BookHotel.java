@@ -21,6 +21,11 @@ public class BookHotel extends JFrame implements ActionListener
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         
+        setSize(1050, 600);
+        setLocation(300, 200);
+        setLayout(null);
+        setTitle("Book Hotel");
+        
         
         JLabel text = new JLabel("BOOK HOTEL", SwingConstants.CENTER);
         text.setOpaque(true);

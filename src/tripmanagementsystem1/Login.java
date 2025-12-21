@@ -153,7 +153,21 @@ public void actionPerformed (ActionEvent ae)
     if (ae.getSource() == login)
     {
         String username = tfusername.getText();
+        if (username.matches("[a-zA-Z]+"))              // Using Regular Expression (regex) to validate username 
+        {
+            System.out.println("Valid Username");
+        } else 
+        {
+            System.out.println("Invalid Username (Only alphabets allowed)");
+        }
         String pass = tfpassword.getText();
+        if (pass.matches("^[a-zA-Z0-9.]+$"))            // Using Regular Expression (regex) to validate password
+        {
+            System.out.println("Valid Password");
+        } else 
+        {
+            System.out.println("Invalid Password (Only letters, digits, and dot allowed)");
+        }
 
         // 1) Empty input validation
         if (username.equals("") || pass.equals("")) {

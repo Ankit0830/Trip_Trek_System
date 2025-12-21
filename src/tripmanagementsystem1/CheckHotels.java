@@ -62,6 +62,11 @@ public class CheckHotels extends JFrame implements Runnable
         caption.setFont(new Font("Tahoma", Font.PLAIN, 40));
         caption.setForeground(Color.WHITE);
         add(caption);
+        
+        setSize(1000, 700);
+        setLocation(300, 200);
+        setLayout(null);
+        setTitle("Check Hotel");
 
         ImageIcon[] image = new ImageIcon[9];
         Image[] jimage = new Image[9];

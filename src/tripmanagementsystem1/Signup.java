@@ -140,8 +140,33 @@ public class Signup extends JFrame implements ActionListener{
         if (ae.getSource() == create)
         {
             String username = tfusername.getText();
+            if (username.matches("[a-zA-Z]+"))              // Using Regular Expression (regex) to validate username 
+            {
+                System.out.println("Valid Username");
+            } else 
+            {
+                System.out.println("Invalid Username (Only alphabets allowed)");
+            }
+            
+            
             String name = tfname.getText();
+            if (name.matches("[a-zA-Z]+"))              // Using Regular Expression (regex) to validate name 
+            {
+                System.out.println("Valid Name");
+            } else 
+            {
+                System.out.println("Invalid Name (Only alphabets allowed)");
+            }
+            
+            
             String password = tfpassword.getText();
+            if (password.matches("^[a-zA-Z0-9.]+$"))            // Using Regular Expression (regex) to validate password
+            {
+                System.out.println("Valid Password");
+            } else 
+            {
+                System.out.println("Invalid Password (Only letters, digits, and dot allowed)");
+            }
             String question = security.getSelectedItem();
             String answer = tfanswer.getText();
             

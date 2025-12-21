@@ -21,6 +21,11 @@ public class BookPackage extends JFrame implements ActionListener
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         
+        setSize(1050, 500);
+        setLocation(300, 200);
+        setLayout(null);
+        setTitle("Book Package");
+        
         
         JLabel text = new JLabel("BOOK PACKAGE", SwingConstants.CENTER);
         text.setOpaque(true);

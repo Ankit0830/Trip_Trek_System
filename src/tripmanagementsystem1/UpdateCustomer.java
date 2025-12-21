@@ -17,6 +17,11 @@ public class UpdateCustomer extends JFrame implements ActionListener
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         
+        setSize(850, 550);
+        setLocation(300, 200);
+        setLayout(null);
+        setTitle("Update Personal Details");
+        
         JLabel text = new JLabel("UPDATE CUSTOMER DETAILS");
         text.setBounds(50,5,300,25);
         text.setFont(new Font("Tahoma", Font.BOLD, 20));

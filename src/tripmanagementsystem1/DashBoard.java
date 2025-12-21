@@ -213,11 +213,11 @@ public class DashBoard extends JFrame implements ActionListener
         image.setBounds(0, 0,1650, 1000);
         add(image);
         
-        JLabel text = new JLabel("Trip Management System");
-        text.setBounds(400,60,1200,70);
-        text.setForeground(Color.WHITE);
-        text.setFont(new Font("Raleway", Font.PLAIN,55));
-        image.add(text);
+//        JLabel text = new JLabel("Trip Management System");
+//        text.setBounds(400,60,1200,70);
+//        text.setForeground(Color.WHITE);
+//        text.setFont(new Font("Raleway", Font.PLAIN,55));
+//        image.add(text);
         
         
         

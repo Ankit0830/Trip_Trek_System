@@ -18,6 +18,11 @@ public class AddCustomer extends JFrame implements ActionListener
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         
+        setSize(850, 550);
+        setLocation(300, 200);
+        setLayout(null);
+        setTitle("Add Personal Details"); 
+        
         JLabel lblusername = new JLabel("Username");
         lblusername.setBounds(30,50,150,25);
         add(lblusername);
