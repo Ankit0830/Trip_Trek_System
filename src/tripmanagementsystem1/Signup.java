@@ -140,35 +140,67 @@ public class Signup extends JFrame implements ActionListener{
         if (ae.getSource() == create)
         {
             String username = tfusername.getText();
-            if (username.matches("[a-zA-Z]+"))              // Using Regular Expression (regex) to validate username 
+//            if (username.matches("[a-zA-Z].+"))              // Using Regular Expression (regex) to validate username 
+//            if (username.matches("^*[a-z1-9.].+"))  //Done
+//            {
+//                String username = tfusername.getText();
+//            } else 
+//            {
+//                System.out.println("Invalid Username (Only alphabets allowed)");
+//            }
+
+            if (username.matches("^[a-zA-Z]+$"))
             {
-                System.out.println("Valid Username");
-            } else 
-            {
-                System.out.println("Invalid Username (Only alphabets allowed)");
+                // store value
+                System.out.println(username);
             }
-            
+            else
+            {
+                JOptionPane.showInternalMessageDialog(null, "Username invalid, please fill correct username(Only alphabets allowed)");
+                setVisible(true);
+//                System.out.println("Username invalid, please fill correct username");
+                return;   // stops further execution
+            }
             
             String name = tfname.getText();
-            if (name.matches("[a-zA-Z]+"))              // Using Regular Expression (regex) to validate name 
+            
+            // Using Regular Expression (regex) to validate name 
+            if (name.matches("^[a-zA-Z ]+$"))//Done
             {
-                System.out.println("Valid Name");
+                System.out.println(name);
             } else 
             {
-                System.out.println("Invalid Name (Only alphabets allowed)");
-            }
-            
+                JOptionPane.showInternalMessageDialog(null, "Invalid Name (Only alphabets allowed)");
+                setVisible(true);
+                return;
+//                System.out.println("Invalid Name (Only alphabets allowed)");
+            }            
             
             String password = tfpassword.getText();
-            if (password.matches("^[a-zA-Z0-9.]+$"))            // Using Regular Expression (regex) to validate password
+            if (password.matches("^[a-zA-Z0-9.].+$")) //Done           // Using Regular Expression (regex) to validate password
             {
-                System.out.println("Valid Password");
+                System.out.println(password);
             } else 
             {
-                System.out.println("Invalid Password (Only letters, digits, and dot allowed)");
+                JOptionPane.showInternalMessageDialog(null, "Invalid Password (Only letters, digits, and dot allowed)");
+                setVisible(true);
+                return;
+//                System.out.println("Invalid Password (Only letters, digits, and dot allowed)");
             }
             String question = security.getSelectedItem();
             String answer = tfanswer.getText();
+            
+            if (answer.matches("^[a-zA-Z ]+$"))//Done
+            {
+                System.out.println(answer);
+            } else 
+            {
+                JOptionPane.showInternalMessageDialog(null, "Invalid answer (Only alphabets allowed)");
+                setVisible(true);
+                return;
+//                System.out.println("Invalid Name (Only alphabets allowed)");
+            }
+            
             
             String query = "insert into account values ('"+username+"', '"+name+"', '"+password+"', '"+question+"', '"+answer+"' )";
             try
